@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+{% block title %} <title>Register</title> {% endblock title %}
+{% block content %}
+    <div class="container">
+       <h4>Register</h4>
+        <hr>
+        <br>
+        {{ form.hidden_tag() }}
+        {{ wtf.quick_form(form, button_map={'submit': {'class': 'btn btn-primary'}}) }}
+    </div>
+{% endblock content %}

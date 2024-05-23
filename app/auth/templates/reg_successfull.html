@@ -1,0 +1,8 @@
+{% extends 'layout.html' %}
+{% block title %} <title>Reg Success</title> {% endblock title %}
+{% block content %}
+    <div class="container">
+        <h1>You've been successfully registered</h1>
+        <a href="{{ url_for('main.main_page') }}" class="btn btn-primary">Return to the main page</a>
+    </div>
+{% endblock content %}

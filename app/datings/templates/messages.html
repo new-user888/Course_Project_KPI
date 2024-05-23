@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    <title>Messages</title>
+{% endblock title %}
+
+{% block content %}
+        <div class="container" style="padding: 25px">
+            <h1>Invitations</h1>
+            {%if invitations %}
+                {% for invitation in invitations %}
+                    <hr>
+                    <br>
+                    <div class="row">
+                        <div class="col">{{ invitation.sender.user_name }}</div>
+                        <div class="col">{{ invitation.sender.user_bio }}</div>
+                        <div class="col">{{ invitation.state }}</div>
+                        {% if invitation.state == 'pending' %}
+                        <div class="col">
+                            <form action="{{ url_for('main.messages') }}" method="POST">
+                                <input type="hidden" name="invitation_id" value="{{ invitation.id }}">
+                                <button type="submit" name="action" value="accept" class="btn btn-primary">Accept</button>
+                                <button type="submit" name="action" value="decline" class="btn btn-primary">Decline</button>
+                            </form>
+                        </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            {% else %}
+                <hr>
+                <br>
+                <h3>Seems bad, but nobody sent you an invitation :<</h3>
+            {% endif %}
+        </div>
+{% endblock content %}

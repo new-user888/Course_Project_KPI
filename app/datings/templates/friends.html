@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    <title>My Friends</title>
+{% endblock title %}
+
+{% block content %}
+    <div class="container" style="padding: 25px">
+        <h1>My Friends :></h1>
+        {% if invitations %}
+            <div class="row">
+                <div class="col">Username</div>
+                <div class="col">About</div>
+                <div class="col">Private</div>
+            </div>
+            {% for invitation in invitations %}
+                <hr>
+                <br>
+                <div class="row">
+                    <div class="col">{{ invitation.sender.user_name }}</div>
+                    <div class="col">{{ invitation.sender.user_bio }}</div>
+                    <div class="col">{{ invitation.sender.user_private }}</div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <hr>
+            <br>
+            <h3>Seems bad, but nobody sent you an invitation :<</h3>
+        {% endif %}
+    </div>
+{% endblock content %}
